@@ -13,6 +13,7 @@ in
       nixos.hyprland
       nixos.sddm
       nixos.audio
+      nixos.steam
       {
         networking.hostName = "nox";
         # Required for the "networkmanager" group below to exist; matches the
