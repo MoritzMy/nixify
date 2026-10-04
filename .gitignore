@@ -1,0 +1,15 @@
+# Claude Code
+.claude/
+
+# Nix build outputs
+result
+result-*
+
+# direnv
+.direnv/
+.envrc.local
+
+# Editor / OS
+*.swp
+*~
+.DS_Store
