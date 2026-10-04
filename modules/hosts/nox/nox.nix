@@ -14,6 +14,8 @@ in
       nixos.sddm
       nixos.audio
       nixos.steam
+      nixos.battery
+      nixos.brightness
       {
         networking.hostName = "nox";
         # Required for the "networkmanager" group below to exist; matches the
@@ -59,6 +61,7 @@ in
             hm.helix
             hm.fastfetch
             hm.kitty
+            hm.noctalia
           ];
           home.stateVersion = "25.05"; # keep your existing value
         };
