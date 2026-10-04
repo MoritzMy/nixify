@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nix eval --impure --raw --expr ' *)",
+      "Bash(nix build *)"
+    ]
+  }
+}

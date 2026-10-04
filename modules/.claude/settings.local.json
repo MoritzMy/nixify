@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/dyna/.config/hypr/**)",
+      "Read(//home/dyna/.config/**)",
+      "Read(//nix/var/nix/profiles/per-user/**)",
+      "Bash(home-manager --version)"
+    ]
+  }
+}
