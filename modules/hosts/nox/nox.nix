@@ -16,6 +16,7 @@ in
       nixos.steam
       nixos.battery
       nixos.brightness
+      nixos.bluetooth
       {
         networking.hostName = "nox";
         # Required for the "networkmanager" group below to exist; matches the
@@ -62,8 +63,9 @@ in
             hm.fastfetch
             hm.kitty
             hm.noctalia
+            hm.obsidian
           ];
-          home.stateVersion = "25.05"; # keep your existing value
+          home.stateVersion = "26.05"; # keep your existing value
         };
       }
     ];
