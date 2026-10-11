@@ -13,12 +13,12 @@ in
       nixos.hyprland
       nixos.sddm
       nixos.audio
-      nixos.steam
       nixos.battery
       nixos.brightness
       nixos.bluetooth
       nixos.wine
       nixos.docker
+      nixos.gaming
       {
         networking.hostName = "nox";
         # Required for the "networkmanager" group below to exist; matches the
@@ -72,6 +72,7 @@ in
             hm.wine
             hm.jetbrains
             hm.neovim
+            hm.gaming
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };
