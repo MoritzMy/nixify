@@ -43,6 +43,8 @@ in
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;
 
+        time.timeZone = "Europe/Berlin";
+
         users.users.dyna = {
           isNormalUser = true;
           extraGroups = [
@@ -74,6 +76,7 @@ in
             hm.neovim
             hm.gaming
             hm.spotify
+            hm.nh
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };
