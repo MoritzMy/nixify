@@ -73,6 +73,7 @@ in
             hm.jetbrains
             hm.neovim
             hm.gaming
+            hm.spotify
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };

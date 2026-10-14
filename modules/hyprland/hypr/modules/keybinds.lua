@@ -62,3 +62,12 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+local function noctalia(keys, cmd)
+  hl.bind(keys, hl.dsp.exec_cmd("noctalia msg " .. cmd))
+end
+
+noctalia("SUPER + Space", "panel-toggle launcher")
+noctalia("SUPER + C",     "panel-toggle control-center")
+noctalia("SUPER + comma", "settings-toggle")
+noctalia("ALT + Tab",     "window-switcher")
