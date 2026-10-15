@@ -19,6 +19,8 @@ in
       nixos.wine
       nixos.docker
       nixos.gaming
+      nixos.nh
+      nixos.vpn
       {
         networking.hostName = "nox";
         # Required for the "networkmanager" group below to exist; matches the
@@ -41,9 +43,19 @@ in
         };
 
         boot.loader.systemd-boot.enable = true;
+        boot.loader.systemd-boot.configurationLimit = 10;
         boot.loader.efi.canTouchEfiVariables = true;
 
         time.timeZone = "Europe/Berlin";
+
+        fileSystems = {
+          "/".options = [ "compress=zstd" "noatime" ];
+          "/home".options = [ "compress=zstd" "noatime" ];
+          "/nix".options = [ "compress=zstd" "noatime" ];
+        };
+
+        services.btrfs.autoScrub.enable = true;
+        services.fwupd.enable = true;
 
         users.users.dyna = {
           isNormalUser = true;
@@ -76,7 +88,8 @@ in
             hm.neovim
             hm.gaming
             hm.spotify
-            hm.nh
+            hm.audio
+            hm.clipboard
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };

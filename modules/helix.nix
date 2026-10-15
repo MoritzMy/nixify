@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.helix = { pkgs, ... }: {
+  flake.modules.homeManager.helix = { config, pkgs, ... }: {
     programs.helix = {
       enable = true;
       extraPackages = with pkgs; [
@@ -19,7 +19,7 @@
           # against this flake's actual configuration.
           config.nixd =
             let
-              flake = ''(builtins.getFlake "/home/dyna/.dotfiles")'';
+              flake = ''(builtins.getFlake "${config.home.homeDirectory}/.dotfiles")'';
             in
             {
               nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";

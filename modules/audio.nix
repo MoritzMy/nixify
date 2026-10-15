@@ -4,12 +4,13 @@
       enable = true;
       wireplumber.enable = true;
       pulse.enable = true;
-      audio.enable = true;
       alsa = {
         enable = true;
         support32Bit = true;
       };
     };
+
+    security.rtkit.enable = true;
 
     programs.dconf.enable = true;
 

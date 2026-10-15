@@ -15,6 +15,7 @@
       package = null;
       portalPackage = null;
       configType = "lua";
+      systemd.enable = false;
     };
 
     # ~/.config/hypr is an out-of-store symlink to the dotfiles tree so the config

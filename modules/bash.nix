@@ -6,7 +6,7 @@
       historyControl = [ "ignoredups" ];
       shellAliases = {
         ll = "ls -la";
-        rebuild = "nh os switch /home/dyna/.dotfiles";
+        rebuild = "nh os switch";
       };
     };
   };
