@@ -3,7 +3,7 @@
     { pkgs, ... }:
     let
       sddm-theme = pkgs.sddm-astronaut.override {
-        embeddedTheme = "pixel_sakura";
+        embeddedTheme = "black_hole";
       };
     in
     {
