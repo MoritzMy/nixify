@@ -49,9 +49,18 @@ in
         time.timeZone = "Europe/Berlin";
 
         fileSystems = {
-          "/".options = [ "compress=zstd" "noatime" ];
-          "/home".options = [ "compress=zstd" "noatime" ];
-          "/nix".options = [ "compress=zstd" "noatime" ];
+          "/".options = [
+            "compress=zstd"
+            "noatime"
+          ];
+          "/home".options = [
+            "compress=zstd"
+            "noatime"
+          ];
+          "/nix".options = [
+            "compress=zstd"
+            "noatime"
+          ];
         };
 
         services.btrfs.autoScrub.enable = true;
@@ -90,6 +99,7 @@ in
             hm.spotify
             hm.audio
             hm.clipboard
+            hm.minecraft
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };

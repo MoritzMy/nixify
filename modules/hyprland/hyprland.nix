@@ -26,9 +26,11 @@
     xdg.configFile."hypr/hyprland.lua".enable = false;
 
     xdg.configFile."hypr".source =
-      config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/.dotfiles/modules/hyprland/hypr";
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/modules/hyprland/hypr";
 
-    home.packages = [ pkgs.kitty ];
+    home.packages = with pkgs; [
+      kitty
+      hyprshot
+    ];
   };
 }
