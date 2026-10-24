@@ -100,6 +100,8 @@ in
             hm.audio
             hm.clipboard
             hm.minecraft
+            hm.discord
+            hm.programming
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };
