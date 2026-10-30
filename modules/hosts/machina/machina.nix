@@ -1,0 +1,121 @@
+{ config, inputs, ... }:
+let
+  nixos = config.flake.modules.nixos;
+  hm = config.flake.modules.homeManager;
+in
+{
+  flake.nixosConfigurations.machina = inputs.nixpkgs.lib.nixosSystem {
+    modules = [
+      ./_hardware-configuration.nix
+      nixos.home-manager
+      nixos.nix
+      nixos.git
+      nixos.hyprland
+      nixos.sddm
+      nixos.audio
+      nixos.battery
+      nixos.brightness
+      nixos.bluetooth
+      nixos.wine
+      nixos.docker
+      nixos.gaming
+      nixos.nh
+      nixos.vpn
+      nixos.nvidia
+      (
+        { config, ... }:
+        {
+          # GTX 1060 (Pascal): dropped by the 590+ drivers and unsupported by
+          # the open kernel module, so pin the last branch that supports it.
+          hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+          hardware.nvidia.open = false;
+        }
+      )
+      {
+        networking.hostName = "machina";
+        # Required for the "networkmanager" group below to exist; matches the
+        # previous /etc/nixos configuration.
+        networking.networkmanager.enable = true;
+        system.stateVersion = "26.05";
+
+        i18n.defaultLocale = "en_US.UTF-8";
+
+        i18n.extraLocaleSettings = {
+          LC_ADDRESS = "de_DE.UTF-8";
+          LC_IDENTIFICATION = "de_DE.UTF-8";
+          LC_MEASUREMENT = "de_DE.UTF-8";
+          LC_MONETARY = "de_DE.UTF-8";
+          LC_NAME = "de_DE.UTF-8";
+          LC_NUMERIC = "de_DE.UTF-8";
+          LC_PAPER = "de_DE.UTF-8";
+          LC_TELEPHONE = "de_DE.UTF-8";
+          LC_TIME = "de_DE.UTF-8";
+        };
+
+        boot.loader.systemd-boot.enable = true;
+        boot.loader.systemd-boot.configurationLimit = 10;
+        boot.loader.efi.canTouchEfiVariables = true;
+
+        time.timeZone = "Europe/Berlin";
+
+        fileSystems = {
+          "/".options = [
+            "compress=zstd"
+            "noatime"
+          ];
+          "/home".options = [
+            "compress=zstd"
+            "noatime"
+          ];
+          "/nix".options = [
+            "compress=zstd"
+            "noatime"
+          ];
+        };
+
+        services.btrfs.autoScrub.enable = true;
+        services.fwupd.enable = true;
+
+        users.users.dyna = {
+          isNormalUser = true;
+          extraGroups = [
+            "wheel"
+            "networkmanager"
+            "docker"
+          ];
+        };
+
+        nixpkgs.config.allowUnfree = true;
+
+        home-manager.users.dyna = {
+          imports = [
+            hm.git
+            hm.hyprland
+            hm.bash
+            hm.claude
+            hm.zen-browser
+            hm.awww
+            hm.helix
+            hm.fastfetch
+            hm.kitty
+            hm.noctalia
+            hm.obsidian
+            hm.devenv
+            hm.netTools
+            hm.wine
+            hm.jetbrains
+            hm.neovim
+            hm.gaming
+            hm.spotify
+            hm.audio
+            hm.clipboard
+            hm.minecraft
+            hm.discord
+            hm.programming
+          ];
+          home.stateVersion = "26.05"; # keep your existing value
+        };
+      }
+    ];
+  };
+}
