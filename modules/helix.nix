@@ -8,7 +8,7 @@
       ];
 
       settings = {
-        theme = "catppuccin_mocha";
+        theme = "noctalia";
         editor.line-number = "relative";
       };
 
