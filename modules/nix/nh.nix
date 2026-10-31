@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.nh = { config, ... }: {
+  flake.modules.nixos.nix = { config, ... }: {
     programs.nh = {
       enable = true;
       flake = "${config.users.users.dyna.home}/.dotfiles";

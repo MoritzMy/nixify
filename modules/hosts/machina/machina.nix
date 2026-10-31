@@ -19,7 +19,6 @@ in
       nixos.wine
       nixos.docker
       nixos.gaming
-      nixos.nh
       nixos.vpn
       nixos.nvidia
       (

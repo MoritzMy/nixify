@@ -19,7 +19,6 @@ in
       nixos.wine
       nixos.docker
       nixos.gaming
-      nixos.nh
       nixos.vpn
       {
         networking.hostName = "nox";
@@ -101,6 +100,7 @@ in
             hm.clipboard
             hm.minecraft
             hm.discord
+            hm.yazi
             hm.programming
           ];
           home.stateVersion = "26.05"; # keep your existing value
