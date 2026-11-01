@@ -9,11 +9,11 @@ local function hostname()
   return name
 end
 
-local dir = os.getenv("HOME") .. "/.config/hypr/monitors"
-local ok = pcall(dofile, dir .. (hostname() or "") .. ".lua")
-if not ok then
-  pcall(dofile, dir .. "default.lua")
+local host = hostname() or ""
+if not pcall(require, "modules.monitors." .. host) then
+  pcall(require, "modules.monitors.default")
 end
+
 
 require("modules.env")
 require("modules.permissions")

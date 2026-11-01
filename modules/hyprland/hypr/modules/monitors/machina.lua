@@ -1,12 +1,12 @@
 hl.monitor({
-  output = "Left 144hz Monitor",
+  output = "DVI-D-1",
   mode = "1920x1080@144",
   position = "auto",
   scale = "1"
 })
 
 hl.monitor({
-  output = "Right 60hz Monitor",
+  output = "HDMI-A-1",
   mode = "1920x1080@60",
   position = "auto",
   scale = "1"
