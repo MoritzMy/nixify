@@ -5,7 +5,12 @@
   #   - Turing (GTX 16xx / RTX 20xx) and newer: defaults below (stable, open)
   #   - Maxwell / Pascal / Volta (GTX 9xx / 10xx): legacy_580, open = false
   flake.modules.nixos.nvidia =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -22,6 +27,7 @@
         modesetting.enable = true;
         # Preserve VRAM across suspend/resume; avoids corrupted/black screens on wake.
         powerManagement.enable = lib.mkDefault true;
+        powerManagement.finegrained = false;
         nvidiaSettings = true;
       };
 

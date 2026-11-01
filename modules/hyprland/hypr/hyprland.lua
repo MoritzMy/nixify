@@ -1,7 +1,20 @@
 -- Hyprland config entry point. Each section lives in modules/.
 -- https://wiki.hypr.land/Configuring/Start/
 
-require("modules.monitors")
+local function hostname()
+  local f = io.open("/etc/hostname", "r")
+  if not f then return nil end
+  local name = f:read("*l")
+  f:close()
+  return name
+end
+
+local dir = os.getenv("HOME") .. "/.config/hypr/monitors"
+local ok = pcall(dofile, dir .. (hostname() or "") .. ".lua")
+if not ok then
+  pcall(dofile, dir .. "default.lua")
+end
+
 require("modules.env")
 require("modules.permissions")
 require("modules.autostart")
