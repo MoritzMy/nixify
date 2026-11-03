@@ -112,6 +112,7 @@ in
             hm.discord
             hm.programming
             hm.yazi
+            hm.fzf
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };
