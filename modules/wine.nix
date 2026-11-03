@@ -5,7 +5,7 @@
 
   flake.modules.homeManager.wine = { pkgs, ... }: {
     home.packages = [
-      pkgs.wineWow64Packages.stable
+      pkgs.wineWow64Packages.unstable
       pkgs.winetricks
     ];
   };
