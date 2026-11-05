@@ -113,6 +113,7 @@ in
             hm.programming
             hm.yazi
             hm.fzf
+            hm.starship
           ];
           home.stateVersion = "26.05"; # keep your existing value
         };
