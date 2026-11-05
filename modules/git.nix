@@ -16,6 +16,11 @@
       };
     };
 
+    programs.lazygit = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+
     programs.gh.enable = true;
   };
 }
