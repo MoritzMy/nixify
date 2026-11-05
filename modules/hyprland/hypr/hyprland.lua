@@ -26,5 +26,7 @@ require("modules.input")
 require("modules.keybinds")
 require("modules.rules")
 
+
+
 -- For Noctalia Color templates
 require("noctalia").apply_theme()

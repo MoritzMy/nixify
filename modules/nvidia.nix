@@ -34,6 +34,14 @@
       # GPU access inside containers (`docker run --device nvidia.com/gpu=all`).
       hardware.nvidia-container-toolkit.enable = lib.mkDefault config.virtualisation.docker.enable;
 
+      # After a driver update the running kernel module stays old until reboot, so
+      # restarting the CDI generator during `switch` fails with "Driver/library
+      # version mismatch". That failed activation makes nh abort before it registers
+      # the generation / updates the bootloader. Let it regenerate on next boot instead.
+      systemd.services.nvidia-container-toolkit-cdi-generator = lib.mkIf config.hardware.nvidia-container-toolkit.enable {
+        restartIfChanged = false;
+      };
+
       # Exported via PAM, so they reach SDDM -> UWSM -> Hyprland and every app.
       environment.sessionVariables = {
         LIBVA_DRIVER_NAME = "nvidia";
